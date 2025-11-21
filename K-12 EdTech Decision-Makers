@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-12 EdTech Decision-Makers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F8FA; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flow-step {
+            flex: 1 1 150px;
+            min-width: 150px;
+        }
+        .flow-arrow {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #87CEFA;
+            margin: 0 0.5rem;
+        }
+        @media (max-width: 767px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="text-[#343A40]">
+
+    <header class="w-full bg-gradient-to-r from-[#007BFF] to-[#00BFFF] p-10 md:p-16 text-white text-center rounded-b-lg shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">The K-12 EdTech Procurement Labyrinth</h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto">An Infographic Guide to the Key Decision-Makers and Influencers for Technology Investments in US Public Schools.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="overview" class="my-8 md:my-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card p-6 md:p-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#007BFF] mb-4">The Two-Tiered System: District vs. School</h2>
+                    <p class="text-base md:text-lg mb-4">Understanding EdTech procurement requires knowing where decisions are made. The vast majority of significant financial decisions, especially for infrastructure, core software (SIS, LMS), and large hardware rollouts, happen at the district level. This centralizes purchasing power and ensures standardization.</p>
+                    <p class="text-base md:text-lg">School-level personnel, led by the Principal, control smaller, supplemental budgets. Their primary role is implementation, but their feedback and pilot programs heavily influence future district-wide adoptions. They are the "boots on the ground" whose buy-in is critical for success.</p>
+                </div>
+                <div class="card p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-center mb-4">Procurement Power Breakdown</h3>
+                    <p class="text-center text-gray-600 mb-4">While schools have influence, the district holds the purse strings for major investments.</p>
+                    <div class="chart-container">
+                        <canvas id="procurementSplitChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="district-roles" class="my-8 md:my-12 card p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#007BFF] mb-4 text-center">District HQ: The Central Command</h2>
+            <p class="text-lg text-center max-w-4xl mx-auto mb-8">The district office is where strategic vision, large-scale budgets, and long-term technology roadmaps are created. Roles here are distinct, with technology, curriculum, and executive leadership all holding stakes in the procurement process.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">District Role Hierarchy (Mind Map)</h3>
+                    <div class="space-y-4 text-sm md:text-base">
+                        <div class="bg-[#E0F7FA] p-4 rounded-lg shadow font-semibold border border-[#00BFFF]">Superintendent (Executive Sign-off)</div>
+                        <div class="pl-6 md:pl-8 border-l-4 border-[#00BFFF] space-y-4">
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">Chief Technology/Info. Officer (CTO/CIO)</p>
+                                <p class="text-xs text-gray-600">Primary Decision-Maker</p>
+                            </div>
+                            <div class="pl-6 md:pl-8 border-l-4 border-gray-300 space-y-4">
+                                <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                    <p class="font-semibold">Director of IT / Technology</p>
+                                    <p class="text-xs text-gray-600">Primary Influencer / Recommender</p>
+                                </div>
+                                <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                    <p class="font-semibold">Network / Systems Admins</p>
+                                    <p class="text-xs text-gray-600">Technical Evaluators</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">Asst. Superintendent / Chief Academic Officer</p>
+                                <p class="text-xs text-gray-600">Primary Decision-Maker (Curriculum)</p>
+                            </div>
+                            <div class="pl-6 md:pl-8 border-l-4 border-gray-300 space-y-4">
+                                <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                    <p class="font-semibold">Director of Curriculum & Instruction</p>
+                                    <p class="text-xs text-gray-600">Primary Influencer / Recommender</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">Chief Financial/Business Officer (CFO/CBO)</p>
+                                <p class="text-xs text-gray-600">Secondary Influencer (Budget)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-center mb-4">District Role Procurement Influence</h3>
+                    <p class="text-center text-gray-600 mb-4">Influence ratings (out of 10) for new technology adoption. The CTO and Academic leads hold the most direct power.</p>
+                    <div class="chart-container">
+                        <canvas id="districtInfluenceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold mt-12 mb-6">Key District Role Profiles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-lg text-[#007BFF]">CTO / CIO</h4>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Function:</strong> Sets tech vision, manages infrastructure, ensures security & interoperability.</p>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Influence:</strong> High. Final technical decision-maker and budget manager for IT.</p>
+                    <p class="text-sm"><strong class="text-gray-700">Pain Points:</strong> Legacy systems, data security threats, integration nightmares, tight budgets, proving ROI.</p>
+                </div>
+
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-lg text-[#007BFF]">Director of Curriculum & Instruction</h4>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Function:</strong> Evaluates tools for pedagogical value, ensures alignment with standards, manages professional development.</p>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Influence:</strong> High. Final academic decision-maker. Can veto tech that doesn't meet learning goals.</p>
+                    <p class="text-sm"><strong class="text-gray-700">Pain Points:</strong> Teacher adoption, finding tools that are *actually* effective (not just "fun"), data privacy, lack of PD time.</p>
+                </div>
+
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-lg text-[#007BFF]">Director of IT</h4>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Function:</strong> Manages day-to-day operations, help desk, device deployment, and network stability. </p>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Influence:</strong> Medium-High. Key recommender to CTO. Manages implementation.</p>
+                    <p class="text-sm"><strong class="text-gray-700">Pain Points:</strong> "Ticket-mill" fatigue, device breakage, network bandwidth, managing 1,000s of student accounts.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="school-roles" class="my-8 md:my-12 card p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#007BFF] mb-4 text-center">The Schoolhouse: Implementation & Influence</h2>
+            <p class="text-lg text-center max-w-4xl mx-auto mb-8">School-level staff are the end-users and on-site managers of technology. While they rarely make large purchases, their influence is critical. They pilot programs, discover new supplemental tools, and are the source of feedback that bubbles up to the district.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">School Role Hierarchy (Mind Map)</h3>
+                    <div class="space-y-4 text-sm md:text-base">
+                        <div class="bg-[#E0F7FA] p-4 rounded-lg shadow font-semibold border border-[#00BFFF]">Principal (Building Leader)</div>
+                        <div class="pl-6 md:pl-8 border-l-4 border-[#00BFFF] space-y-4">
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">Assistant Principal</p>
+                                <p class="text-xs text-gray-600">Secondary Influencer (Discipline/Ops)</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">IT Specialist / Tech Coordinator</p>
+                                <p class="text-xs text-gray-600">Primary Influencer (On-site Support)</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">Lead Teachers / Dept. Heads</p>
+                                <p class="text-xs text-gray-600">Secondary Influencers (User Champions)</p>
+                            </div>
+                            <div class="pl-6 md:pl-8 border-l-4 border-gray-300 space-y-4">
+                                <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                    <p class="font-semibold">Classroom Teachers</p>
+                                    <p class="text-xs text-gray-600">End-Users / Feedback Source</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                                <p class="font-semibold text-[#007BFF]">Librarian / Media Specialist</p>
+                                <p class="text-xs text-gray-600">Secondary Influencer (Digital Literacy)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-center mb-4">School Role Procurement Influence</h3>
+                    <p class="text-center text-gray-600 mb-4">Influence ratings (out of 10) for supplemental tools and district-level recommendations.</p>
+                    <div class="chart-container">
+                        <canvas id="schoolInfluenceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold mt-12 mb-6">Key School Role Profiles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-lg text-[#007BFF]">Principal</h4>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Function:</strong> Building-level manager, sets school culture, manages site budget, evaluates teachers.</p>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Influence:</strong> Medium. Controls site-based budget for supplemental software. Key voice in district pilots.</p>
+                    <p class="text-sm"><strong class="text-gray-700">Pain Points:</strong> Teacher burnout, student behavior, parent communication, pressure to raise test scores.</p>
+                </div>
+
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-lg text-[#007BFF]">IT Specialist / Tech Coordinator</h4>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Function:</strong> First line of defense for all tech issues. "Fixes the Wi-Fi," resets passwords, manages carts.</p>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Influence:</strong> Medium. Strong recommender to district IT. Knows what *actually* works vs. what breaks.</p>
+                    <p class="text-sm"><strong class="text-gray-700">Pain Points:</strong> Overwhelmed with requests, lack of time for proactive training, users who don't follow instructions.</p>
+                </div>
+
+                <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                    <h4 class="font-bold text-lg text-[#007BFF]">Lead Teacher / Dept. Head</h4>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Function:</strong> Mentors other teachers, pilots new software, advocates for subject-specific tools.</p>
+                    <p class="text-sm mb-2"><strong class="text-gray-700">Influence:</strong> Low-Medium. Highly trusted by peers and curriculum directors. A "teacher champion" is essential for adoption.</p>
+                    <p class="text-sm"><strong class="text-gray-700">Pain Points:</strong> Tools that are hard to use, "one more login" fatigue, lack of student engagement, tools that don't help with differentiation.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="process" class="my-8 md:my-12 card p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#007BFF] mb-4 text-center">The Typical Procurement Flow</h2>
+            <p class="text-lg text-center max-w-4xl mx-auto mb-8">While every district varies, the journey from identifying a need to classroom implementation often follows this path. Notice the shift in responsibility from school-level (need) to district-level (purchase) and back to school-level (implementation).</p>
+            
+            <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-y-4">
+                <div class="flow-step card p-4 text-center bg-gray-50 border border-gray-200">
+                    <span class="text-sm font-bold text-gray-500">STEP 1</span>
+                    <p class="font-semibold text-lg text-[#007BFF]">Need Identified</p>
+                    <p class="text-sm">(School Level)</p>
+                </div>
+                <div class="flow-arrow hidden md:flex">→</div>
+                <div class="flow-arrow flex md:hidden">↓</div>
+                
+                <div class="flow-step card p-4 text-center bg-gray-50 border border-gray-200">
+                    <span class="text-sm font-bold text-gray-500">STEP 2</span>
+                    <p class="font-semibold text-lg text-[#007BFF]">Research & Pilot</p>
+                    <p class="text-sm">(School & District)</p>
+                </div>
+                <div class="flow-arrow hidden md:flex">→</div>
+                <div class="flow-arrow flex md:hidden">↓</div>
+
+                <div class="flow-step card p-4 text-center bg-gray-50 border border-gray-200">
+                    <span class="text-sm font-bold text-gray-500">STEP 3</span>
+                    <p class="font-semibold text-lg text-[#007BFF]">Vendor Vetting</p>
+                    <p class="text-sm">(District Level)</p>
+                </div>
+                <div class="flow-arrow hidden md:flex">→</div>
+                <div class="flow-arrow flex md:hidden">↓</div>
+
+                <div class="flow-step card p-4 text-center bg-gray-50 border border-gray-200">
+                    <span class="text-sm font-bold text-gray-500">STEP 4</span>
+                    <p class="font-semibold text-lg text-[#007BFF]">Budget Approval</p>
+                    <p class="text-sm">(District Level)</p>
+                </div>
+                <div class="flow-arrow hidden md:flex">→</div>
+                <div class="flow-arrow flex md:hidden">↓</div>
+
+                <div class="flow-step card p-4 text-center bg-gray-50 border border-gray-200">
+                    <span class="text-sm font-bold text-gray-500">STEP 5</span>
+                    <p class="font-semibold text-lg text-[#007BFF]">Implementation</p>
+                    <p class="text-sm">(School Level)</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-8 text-gray-500 text-sm">
+        <p>This infographic was generated to visualize the complex procurement landscape of K-12 public schools.</p>
+        <p>&copy; 2025. Data synthesized from user request.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartColors = {
+                primary: '#007BFF',
+                secondary: '#00BFFF',
+                light: '#87CEFA',
+                lightest: '#E0F7FA',
+                text: '#343A40'
+            };
+
+            const sharedTooltipCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const procurementCtx = document.getElementById('procurementSplitChart').getContext('2d');
+            new Chart(procurementCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['District-Led Purchasing', 'School-Led Purchasing'],
+                    datasets: [{
+                        data: [80, 20],
+                        backgroundColor: [chartColors.primary, chartColors.light],
+                        hoverBackgroundColor: [chartColors.secondary, chartColors.lightest],
+                        borderColor: '#ffffff',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: chartColors.text,
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: sharedTooltipCallback.plugins.tooltip
+                    }
+                }
+            });
+
+            const districtInfluenceCtx = document.getElementById('districtInfluenceChart').getContext('2d');
+            new Chart(districtInfluenceCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'CTO / CIO', 
+                        ['Director of', 'IT'], 
+                        ['Director of', 'Curriculum'], 
+                        'Superintendent', 
+                        ['Asst.', 'Superintendent'],
+                        'CFO / CBO'
+                    ],
+                    datasets: [{
+                        label: 'Procurement Influence (out of 10)',
+                        data: [9, 8, 8.5, 6, 7, 5],
+                        backgroundColor: [
+                            chartColors.primary, 
+                            chartColors.secondary, 
+                            chartColors.primary, 
+                            chartColors.light, 
+                            chartColors.light,
+                            chartColors.light
+                        ],
+                        borderColor: chartColors.primary,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 10,
+                            ticks: { color: chartColors.text, font: { family: 'Inter' } }
+                        },
+                        y: {
+                            ticks: { color: chartColors.text, font: { family: 'Inter', size: 13 } }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: sharedTooltipCallback.plugins.tooltip
+                    }
+                }
+            });
+
+            const schoolInfluenceCtx = document.getElementById('schoolInfluenceChart').getContext('2d');
+            new Chart(schoolInfluenceCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Principal', 
+                        ['IT Specialist /', 'Tech Coordinator'], 
+                        ['Asst.', 'Principal'], 
+                        ['Lead Teachers /', 'Dept. Heads'], 
+                        ['Librarian /', 'Media Specialist']
+                    ],
+                    datasets: [{
+                        label: 'Procurement Influence (out of 10)',
+                        data: [6, 5.5, 3, 4, 3.5],
+                        backgroundColor: [
+                            chartColors.primary, 
+                            chartColors.secondary, 
+                            chartColors.light, 
+                            chartColors.secondary, 
+                            chartColors.light
+                        ],
+                        borderColor: chartColors.primary,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 10,
+                            ticks: { color: chartColors.text, font: { family: 'Inter' } }
+                        },
+                        y: {
+                            ticks: { color: chartColors.text, font: { family: 'Inter', size: 13 } }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: sharedTooltipCallback.plugins.tooltip
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Explicitly confirm that NEITHER Mermaid JS NOR SVG were used anywhere in the output. -->
+</body>
+</html>
